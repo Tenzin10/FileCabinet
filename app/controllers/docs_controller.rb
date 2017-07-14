@@ -23,7 +23,11 @@ class DocsController < ApplicationController
 	end
 
 	def update
-		
+		if @doc.update
+			redirect_to @doc
+		else
+			render 'edit'
+		end
 	end
 
 	def edit
@@ -31,7 +35,8 @@ class DocsController < ApplicationController
 	end
 
 	def destroy
-		
+		@doc.destroy
+		redirect_to docs_path
 	end
 
 
