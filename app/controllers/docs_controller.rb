@@ -1,7 +1,7 @@
 class DocsController < ApplicationController
 	before_action :find_doc, except: [:index,:new,:create]
 	def index
-		@doc = Doc.all.order('created_at DESC')
+		@doc = Doc.where(user_id: current_user)
 	end
 
 	def show
@@ -31,7 +31,7 @@ class DocsController < ApplicationController
 	end
 
 	def edit
-		
+		 
 	end
 
 	def destroy
